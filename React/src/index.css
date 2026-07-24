@@ -53,6 +53,7 @@ h1 { margin: .2em 0; font-size: clamp(2.7rem, 6vw, 4.8rem); line-height: 1.05; }
 .map-layout { display: grid; grid-template-columns: 1.25fr .75fr; gap: 4rem; }
 .map-panel { min-height: 430px; display: grid; place-content: center; background: linear-gradient(135deg, #d2e8d9, #9bc6a9); text-align: center; }
 .guide-image { display: block; width: min(100%, 1144px); height: auto; margin: 2rem auto 3rem; border-radius: .5rem; box-shadow: 0 10px 24px #010d0818; }
+.registration-page{width:min(790px,calc(100% - 2rem));margin:0 auto;padding:3rem 0 7rem;text-align:center}.registration-contents{display:grid;gap:.35rem;margin:1rem auto 4rem}.registration-contents a{font-size:.9rem;text-decoration:none}.registration-topic{margin:3.5rem 0}.registration-topic h2{display:inline-block;margin:0 0 2rem;padding:.45rem 1rem;border-radius:999px;background:#e7d9ff;font-size:1rem}.registration-topic h3{margin:2.5rem 0 1rem;font-size:.9rem}.registration-topic p,.registration-topic ol,.registration-topic ul{max-width:480px;margin:0 auto;text-align:left;font-size:.78rem;line-height:1.35}.registration-copy p{margin-bottom:.3rem}.guide-image{margin:1rem auto 2rem;box-shadow:none;border-radius:0}.guide-banner{max-width:620px}.guide-card{max-width:300px}
 
 @media (max-width: 1000px) {
   .card-grid { grid-template-columns: repeat(2, 1fr); }
