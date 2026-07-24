@@ -20,6 +20,13 @@ test('shows transfer resources and TAG eligibility', () => {
   expect(screen.getByText(/UC Berkeley, UCLA, and UC San Diego do not offer TAG/i)).toBeInTheDocument()
 })
 
+test('links transfer students to the official ASSIST website', () => {
+  render(<Transferring />)
+
+  expect(screen.getByRole('link', { name: 'ASSIST website' })).toHaveAttribute('href', 'https://assist.org/')
+  expect(screen.getByRole('link', { name: 'ASSIST website' })).toHaveAttribute('target', '_blank')
+})
+
 test('shows the VTA document requirement', () => {
   render(<VtaCard />)
   expect(screen.getByText(/passport or driver license/i)).toBeInTheDocument()
