@@ -5,7 +5,10 @@ import Navbar from './Navbar'
 
 test('uses the corrected About Us navigation label and route', () => {
   render(<MemoryRouter><Navbar /></MemoryRouter>)
-  expect(screen.getByRole('link', { name: 'About Us' })).toHaveAttribute('href', '/about')
+  expect(screen.getAllByRole('link', { name: 'About Us' })).toHaveLength(2)
+  screen.getAllByRole('link', { name: 'About Us' }).forEach((link) => {
+    expect(link).toHaveAttribute('href', '/about')
+  })
   expect(screen.queryByText('Navigation Bar')).not.toBeInTheDocument()
 })
 
