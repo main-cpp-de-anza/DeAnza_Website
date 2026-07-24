@@ -154,6 +154,71 @@ h1 { margin: .2em 0; font-size: clamp(2.7rem, 6vw, 4.8rem); line-height: 1.05; }
   font-weight: 600;
 }
 
+.vta-page {
+  width: min(1084px, calc(100% - 2rem));
+  margin: 0 auto;
+  padding: clamp(6rem, 11vw, 10.25rem) 0 7rem;
+  text-align: center;
+}
+
+.vta-page h1 {
+  display: inline-block;
+  margin: 0 0 clamp(4rem, 7vw, 6.25rem);
+  padding: .6rem 1.25rem;
+  border-radius: 999px;
+  background: #e7d9ff;
+  font-size: clamp(1.35rem, 3vw, 2rem);
+}
+
+.vta-introduction,
+.vta-documents p,
+.vta-orientation-reminder {
+  margin: 0 auto;
+  font-size: clamp(1rem, 2.1vw, 1.875rem);
+  line-height: 1.35;
+}
+
+.vta-introduction {
+  max-width: 940px;
+}
+
+.vta-location-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(1.25rem, 4vw, 4rem);
+  margin: clamp(4rem, 9vw, 8.5rem) auto 1rem;
+}
+
+.vta-location-image {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border: 1px solid var(--ink);
+  border-radius: 20px;
+  object-fit: cover;
+}
+
+.vta-directions {
+  display: block;
+  margin: 1rem 0 clamp(6rem, 10vw, 9.5rem);
+  text-align: left;
+  font-size: clamp(.95rem, 1.7vw, 1.5rem);
+}
+
+.vta-documents {
+  display: grid;
+  gap: clamp(2.5rem, 5vw, 4rem);
+}
+
+.vta-documents p {
+  max-width: 730px;
+}
+
+.vta-orientation-reminder {
+  max-width: 643px;
+  margin-top: clamp(5rem, 10vw, 8.75rem);
+  font-weight: 600;
+}
+
 @media (max-width: 1000px) {
   .card-grid { grid-template-columns: repeat(2, 1fr); }
 }
@@ -175,4 +240,6 @@ h1 { margin: .2em 0; font-size: clamp(2.7rem, 6vw, 4.8rem); line-height: 1.05; }
 @media (max-width: 620px) {
   .card-grid { grid-template-columns: 1fr; }
   .page-shell { width: calc(100% - 1.25rem); }
+  .vta-location-grid { grid-template-columns: 1fr; }
+  .vta-directions { text-align: center; }
 }

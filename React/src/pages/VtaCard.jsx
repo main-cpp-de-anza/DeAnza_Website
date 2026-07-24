@@ -1,25 +1,45 @@
-import SectionHeading from '../components/SectionHeading'
+import hinsonCampusCenter from '../assets/vta-hinson-campus-center.png'
+import officeOfCollegeLife from '../assets/vta-office-of-college-life.png'
 
 export default function VtaCard() {
   return (
-    <article className="page-shell article">
+    <article className="vta-page">
       <h1>VTA Card</h1>
-      <p className="lead">
-        The VTA SmartPass Card allows De Anza students to travel on the bus for free throughout the
+
+      <p className="vta-introduction">
+        The VTA SmartPass Card allows De Anza students to travel by bus for free throughout the
         quarter.
       </p>
 
-      <SectionHeading>Where to get your card</SectionHeading>
-      <p>
-        Visit the Hinson Campus Center or the Office of College Life to pick up your SmartPass and
-        student ID card.
-      </p>
+      <div className="vta-location-grid">
+        <img
+          className="vta-location-image"
+          src={hinsonCampusCenter}
+          alt="Hinson Campus Center"
+        />
+        <img
+          className="vta-location-image"
+          src={officeOfCollegeLife}
+          alt="Office of College Life"
+        />
+      </div>
 
-      <SectionHeading>Documents to Bring</SectionHeading>
-      <p>Documents to bring: passport or driver license.</p>
+      <a
+        className="vta-directions"
+        href="https://maps.app.goo.gl/gGKmJ2WGnR2RyXq46?g_st=ic"
+        target="_blank"
+        rel="noreferrer"
+      >
+        Google Maps directions to the pickup locations
+      </a>
 
-      <SectionHeading>Orientation reminder</SectionHeading>
-      <p>Please bring it with you on Orientation Day!</p>
+      <section className="vta-documents">
+        <p>Bring a legal document with your face on it.</p>
+        <p>Documents to bring: passport or driver license.</p>
+        <p>We can also make your student ID card.</p>
+      </section>
+
+      <p className="vta-orientation-reminder">Please bring it with you on Orientation Day!</p>
     </article>
   )
 }

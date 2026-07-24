@@ -38,6 +38,17 @@ test('shows the VTA document requirement', () => {
   expect(screen.getByText(/passport or driver license/i)).toBeInTheDocument()
 })
 
+test('shows VTA pickup locations and the map directions link', () => {
+  render(<VtaCard />)
+
+  expect(screen.getByAltText('Hinson Campus Center')).toBeInTheDocument()
+  expect(screen.getByAltText('Office of College Life')).toBeInTheDocument()
+  expect(screen.getByRole('link', { name: /google maps directions/i })).toHaveAttribute(
+    'href',
+    'https://maps.app.goo.gl/gGKmJ2WGnR2RyXq46?g_st=ic',
+  )
+})
+
 test('opens the De Anza location in a new tab', () => {
   render(<CampusMap />)
 
