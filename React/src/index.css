@@ -52,6 +52,7 @@ h1 { margin: .2em 0; font-size: clamp(2.7rem, 6vw, 4.8rem); line-height: 1.05; }
 .article p, .article li { font-size: 1.2rem; line-height: 1.65; }
 .map-layout { display: grid; grid-template-columns: 1.25fr .75fr; gap: 4rem; }
 .map-panel { min-height: 430px; display: grid; place-content: center; background: linear-gradient(135deg, #d2e8d9, #9bc6a9); text-align: center; }
+.guide-image { display: block; width: min(100%, 1144px); height: auto; margin: 2rem auto 3rem; border-radius: .5rem; box-shadow: 0 10px 24px #010d0818; }
 
 @media (max-width: 1000px) {
   .card-grid { grid-template-columns: repeat(2, 1fr); }
@@ -67,6 +68,7 @@ h1 { margin: .2em 0; font-size: clamp(2.7rem, 6vw, 4.8rem); line-height: 1.05; }
   .mobile-nav a { font-size: 1.1rem; }
   .home { padding: 4rem 0; }
   .map-layout { grid-template-columns: 1fr; }
+  .guide-image { margin: 1.25rem auto 2rem; }
   .menu-toggle:focus-visible, a:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
 }
 

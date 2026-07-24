@@ -9,6 +9,9 @@ test('shows registration guidance', () => {
   render(<Registration />)
   expect(screen.getByRole('heading', { name: /priority registration/i })).toBeInTheDocument()
   expect(screen.getByRole('heading', { name: /general education/i })).toBeInTheDocument()
+  expect(screen.getByAltText('MyPortal registration screen')).toBeInTheDocument()
+  expect(screen.getByAltText('Student Registration Dashboard')).toBeInTheDocument()
+  expect(screen.getByAltText('Degree Works What-if guidance')).toBeInTheDocument()
 })
 
 test('shows transfer resources and TAG eligibility', () => {
