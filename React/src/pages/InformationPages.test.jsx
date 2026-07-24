@@ -55,6 +55,17 @@ test('opens the De Anza location in a new tab', () => {
   expect(screen.getByRole('link', { name: /de anza location/i })).toHaveAttribute('target', '_blank')
 })
 
+test('shows the campus map image and unique external location links', () => {
+  render(<CampusMap />)
+
+  expect(screen.getByAltText('De Anza College campus map')).toBeInTheDocument()
+  expect(screen.getByRole('link', { name: 'Tennis Court' })).toHaveAttribute(
+    'href',
+    'https://maps.app.goo.gl/DhHkRStSGSjnJjvm6',
+  )
+  expect(screen.getAllByRole('link', { name: 'Registration & Student Services' })).toHaveLength(1)
+})
+
 test('renders the Main.cpp mission and contact section', () => {
   render(<AboutUs />)
 

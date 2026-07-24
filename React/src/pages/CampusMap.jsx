@@ -14,16 +14,15 @@ const locations = [
 
 export default function CampusMap() {
   return (
-    <article className="page-shell map-page">
-      <h1>Campus Map</h1>
+    <article className="campus-map-page">
+      <div className="campus-map-layout">
+        <img
+          className="campus-map-image"
+          src={campusMapGuide}
+          alt="De Anza College campus map"
+        />
 
-      <div className="map-layout">
-        <div className="map-panel">
-          <p>Campus map</p>
-          <span>Use the location links to navigate campus.</span>
-        </div>
-
-        <ul>
+        <ul className="campus-map-links">
           {locations.map(([name, url]) => (
             <li key={name}>
               <a href={url} target="_blank" rel="noreferrer">
@@ -36,3 +35,4 @@ export default function CampusMap() {
     </article>
   )
 }
+import campusMapGuide from '../assets/campus-map-guide.png'

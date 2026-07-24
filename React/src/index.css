@@ -47,11 +47,38 @@ h1 { margin: .2em 0; font-size: clamp(2.7rem, 6vw, 4.8rem); line-height: 1.05; }
 .card-copy p { min-height: 4.5rem; }
 .card-copy span, .section-heading { color: var(--accent); font-weight: 700; }
 
-.article, .map-page { max-width: 980px; padding: 4rem 0 7rem; }
+.article { max-width: 980px; padding: 4rem 0 7rem; }
 .section-heading { margin-top: 3rem; }
 .article p, .article li { font-size: 1.2rem; line-height: 1.65; }
-.map-layout { display: grid; grid-template-columns: 1.25fr .75fr; gap: 4rem; }
-.map-panel { min-height: 430px; display: grid; place-content: center; background: linear-gradient(135deg, #d2e8d9, #9bc6a9); text-align: center; }
+.campus-map-page {
+  width: min(1054px, calc(100% - 2rem));
+  margin: 0 auto;
+  padding: 6rem 0 7rem;
+}
+
+.campus-map-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 621fr) minmax(260px, 1fr);
+  align-items: start;
+  gap: clamp(2rem, 6vw, 5.7rem);
+}
+
+.campus-map-image {
+  width: 100%;
+  aspect-ratio: 621 / 539;
+  border: 1px solid var(--ink);
+  border-radius: 20px;
+  object-fit: cover;
+}
+
+.campus-map-links {
+  display: grid;
+  gap: .75rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: clamp(1rem, 1.6vw, 1.2rem);
+}
 .guide-image { display: block; width: min(100%, 1144px); height: auto; margin: 2rem auto 3rem; border-radius: .5rem; box-shadow: 0 10px 24px #010d0818; }
 .registration-page,
 .transferring-page {
@@ -232,7 +259,7 @@ h1 { margin: .2em 0; font-size: clamp(2.7rem, 6vw, 4.8rem); line-height: 1.05; }
   .mobile-nav.is-open { display: grid; gap: 1rem; }
   .mobile-nav a { font-size: 1.1rem; }
   .home { padding: 4rem 0; }
-  .map-layout { grid-template-columns: 1fr; }
+  .campus-map-layout { grid-template-columns: 1fr; }
   .guide-image { margin: 1.25rem auto 2rem; }
   .menu-toggle:focus-visible, a:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
 }
