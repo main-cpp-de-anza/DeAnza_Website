@@ -28,12 +28,42 @@ export default function Registration() {
 
       <Topic title="Priority Registration (Steps)">
         <div id="priority" className="registration-bullets">
-          <p>When you apply to De Anza, be sure to do these two things:</p>
+          <p>When you {' '} 
+            <a
+              href = "https://www.deanza.edu/apply-and-register/"
+              target = "_blank"
+              rel = "noreferer"
+            >
+              apply to De Anza
+            </a> 
+            , be sure to do these two things:</p>
           <ul>
             <li>Declare a major, not “undecided,” on the application.</li>
             <li>Select a goal of transfer, degree, or certificate.</li>
-            <li>Complete assessment and orientation.</li>
-            <li>Create an educational plan.</li>
+            <li>Complete {' '}
+              <a
+                href = "https://deanza.edu/assessment/"
+                target = "_blank"
+                rel = "noreferer"
+              >
+                assessment 
+              </a>
+              {''} and {' '}
+              <a
+                href = "https://www.deanza.edu/apply-and-register/orientation.html"
+                target = "_blank"
+                rel = "noreferer"
+              >
+                orientation.
+              </a></li>
+            <li>Create an {' '} 
+              <a
+                href = "https://www.deanza.edu/apply-and-register/ed-plan.html"
+                target = "_blank"
+                rel = "noreferer"
+              >
+                educational plan.
+              </a></li>
           </ul>
         </div>
       </Topic>
@@ -41,9 +71,31 @@ export default function Registration() {
       <Topic title="How to Pick a Good Professor">
         <div className="registration-bullets">
           <ol id="professors">
-            <li>Check Rate My Professor.</li>
-            <li >Check Reddit for extra information.</li>
-            <li>Check DaGrades.</li>
+            <li>Check {' '} 
+              <a
+                href = "https://www.ratemyprofessors.com/"
+                target = "_blank"
+                rel = "noreferer"
+              >
+                Rate My Professor.
+              </a></li>
+            <li >Check {' '} 
+              <a
+                href = "https://www.reddit.com/"
+                target='_blank'
+                rel = "noreferer"
+              >
+                Reddit
+              </a>
+                {' '} for extra information</li>
+            <li>Check {' '} 
+              <a
+                href = "https://www.deanzagrades.com/courses?page=1"
+                target = '_blank'
+                rel = 'noreferer'
+              >
+                DaGrades.
+              </a></li>
           </ol>
         </div>
       </Topic>
@@ -51,21 +103,28 @@ export default function Registration() {
       <Topic title="How to check Registration Time and Where to Register">
         <div className="registration-bullets">
           <ol id="time">
-            <li>Go to MyPortal.</li>
+            <li>Go to MyPortal</li>
             <li>Click on “Student Registration.”</li>
             <li>Choose “Registration Dashboard.”</li>
             <li>Check registration time and complete registration.</li>
           </ol>
         </div>
 
-        <h3>Go to MyPortal</h3>
+        <h3>Go to {' '} 
+          <a
+            href = "https://www.deanza.edu/"
+            target = '_blank'
+            rel = 'noreferer'
+          >
+            MyPortal.
+          </a></h3>
         <img className="guide-image guide-banner" src={myPortal} alt="MyPortal registration screen" />
 
         <h3>Go to Student Registration</h3>
         <img className="guide-image guide-card" src={student_registration} alt="Student Registration workflow" />
 
         <h3>Registration Dashboard</h3>
-        <img className="guide-image guide-card" src={dashboard} alt="Student Registration Dashboard" />
+        <img className="guide-image guide-banner" src={dashboard} alt="Student Registration Dashboard" />
 
         <h3>Prepare for Registration</h3>
         <div className="registration-bullets">
