@@ -74,7 +74,7 @@ export default function Registration() {
               </a></li>
             <li >Check {' '} 
               <a
-                href = "https://www.reddit.com/"
+                href = "https://www.reddit.com/search/?q=%2Fdeanza&"
                 target='_blank'
                 rel = "noreferer"
               >
