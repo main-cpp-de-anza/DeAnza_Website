@@ -30,7 +30,7 @@ const tagCampuses = [
 
 export default function Transferring() {
   return (
-    <article className="transferring-page">
+    <article className="page-container transferring-page">
       <nav className="transferring-contents" aria-label="Transferring page contents">
         <a href="#assist">ASSIST</a>
         <a href="#tag">TAG</a>
@@ -38,7 +38,7 @@ export default function Transferring() {
       </nav>
 
       <section id="assist" className="transferring-section">
-        <SectionHeading>ASSIST</SectionHeading>
+        <SectionHeading className="heading-pill">ASSIST</SectionHeading>
         <a
           className="assist-welcome"
           href="https://assist.org/"
@@ -62,7 +62,7 @@ export default function Transferring() {
       </section>
 
       <section id="tag" className="transferring-section">
-        <SectionHeading>TAG</SectionHeading>
+        <SectionHeading className="heading-pill">TAG</SectionHeading>
         <h3>
           <strong>TAG guarantees admission to a participating UC campus</strong> 
         </h3>
@@ -83,7 +83,7 @@ export default function Transferring() {
       </section>
 
       <section id="honors" className="transferring-section">
-        <SectionHeading>Honors Program</SectionHeading>
+        <SectionHeading className="heading-pill">Honors Program</SectionHeading>
         <p className="honors-recognition">Honors recognition on transcripts</p>
         <h3>Eligibility Requirements</h3>
         <div className="registration-bullets">

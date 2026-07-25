@@ -9,7 +9,7 @@ import whatif from '../assets/registration-whatif.png'
 function Topic({ title, children }) {
   return (
     <section className="registration-topic">
-      <h2>{title}</h2>
+      <h2 className="heading-pill">{title}</h2>
       {children}
     </section>
   )
@@ -17,7 +17,7 @@ function Topic({ title, children }) {
 
 export default function Registration() {
   return (
-    <article className="registration-page">
+    <article className="page-container registration-page">
       <nav className="registration-contents" aria-label="Registration page contents">
         <a href="#priority">Priority Registration</a>
         <a href="#professors">How to Pick a Good Professor</a>

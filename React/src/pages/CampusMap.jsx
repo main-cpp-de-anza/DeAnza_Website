@@ -14,10 +14,10 @@ const locations = [
 
 export default function CampusMap() {
   return (
-    <article className="campus-map-page">
+    <article className="page-container campus-map-page">
       <div className="campus-map-layout">
         <img
-          className="campus-map-image"
+          className="framed-image campus-map-image"
           src={campusMapGuide}
           alt="De Anza College campus map"
         />

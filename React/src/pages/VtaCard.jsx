@@ -3,8 +3,8 @@ import officeOfCollegeLife from '../assets/vta-office-of-college-life.png'
 
 export default function VtaCard() {
   return (
-    <article className="vta-page">
-      <h1>VTA Card</h1>
+    <article className="page-container vta-page">
+      <h1 className="heading-pill">VTA Card</h1>
 
       <p className="vta-introduction">
         The VTA SmartPass Card allows De Anza students to travel by bus for free throughout the
@@ -13,12 +13,12 @@ export default function VtaCard() {
 
       <div className="vta-location-grid">
         <img
-          className="vta-location-image"
+          className="framed-image vta-location-image"
           src={hinsonCampusCenter}
           alt="Hinson Campus Center"
         />
         <img
-          className="vta-location-image"
+          className="framed-image vta-location-image"
           src={officeOfCollegeLife}
           alt="Office of College Life"
         />
