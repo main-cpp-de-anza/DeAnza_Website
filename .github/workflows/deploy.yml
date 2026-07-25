@@ -35,6 +35,8 @@ jobs:
       - name: Install dependencies
         working-directory: React
         run: npm ci
+
+      - name: Build website
         working-directory: React
         run: npm run build
 
