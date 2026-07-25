@@ -72,3 +72,32 @@ test('renders the Main.cpp mission and contact section', () => {
   expect(screen.getByRole('heading', { name: 'Main.cpp' })).toBeInTheDocument()
   expect(screen.getByRole('heading', { name: /our contact information/i })).toBeInTheDocument()
 })
+
+test('uses shared layout and visual primitives on information pages', () => {
+  const { container, unmount } = render(<Registration />)
+
+  expect(container.querySelector('.registration-page')).toHaveClass('page-container')
+  expect(screen.getByRole('heading', { name: /priority registration/i })).toHaveClass(
+    'heading-pill',
+  )
+
+  unmount()
+  const transferringView = render(<Transferring />)
+
+  expect(transferringView.container.querySelector('.transferring-page')).toHaveClass(
+    'page-container',
+  )
+  expect(screen.getByRole('heading', { name: 'ASSIST' })).toHaveClass('heading-pill')
+
+  transferringView.unmount()
+  const vtaView = render(<VtaCard />)
+
+  expect(vtaView.container.querySelector('.vta-page')).toHaveClass('page-container')
+  expect(screen.getByAltText('Hinson Campus Center')).toHaveClass('framed-image')
+
+  vtaView.unmount()
+  const mapView = render(<CampusMap />)
+
+  expect(mapView.container.querySelector('.campus-map-page')).toHaveClass('page-container')
+  expect(screen.getByAltText('De Anza College campus map')).toHaveClass('framed-image')
+})
