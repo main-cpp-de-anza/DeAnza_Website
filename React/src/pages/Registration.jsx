@@ -1,7 +1,10 @@
 import myPortal from '../assets/registration-myportal.png'
 import dashboard from '../assets/registration-dashboard.png'
 import steps from '../assets/registration-steps.png'
+import student_registration from '../assets/student-registration.png'
+import preparation from '../assets/registration-preparation.png'
 import degreeWorks from '../assets/registration-degreeworks.png'
+import whatif from '../assets/registration-whatif.png'
 
 function Topic({ title, children }) {
   return (
@@ -24,7 +27,7 @@ export default function Registration() {
       </nav>
 
       <Topic title="Priority Registration (Steps)">
-        <div id="priority" className="registration-copy">
+        <div id="priority" className="registration-bullets">
           <p>When you apply to De Anza, be sure to do these two things:</p>
           <ul>
             <li>Declare a major, not “undecided,” on the application.</li>
@@ -36,32 +39,42 @@ export default function Registration() {
       </Topic>
 
       <Topic title="How to Pick a Good Professor">
-        <ol id="professors">
-          <li>Check Rate My Professor.</li>
-          <li>Check Reddit for extra information.</li>
-          <li>Check DaGrades.</li>
-        </ol>
+        <div className="registration-bullets">
+          <ol id="professors">
+            <li>Check Rate My Professor.</li>
+            <li >Check Reddit for extra information.</li>
+            <li>Check DaGrades.</li>
+          </ol>
+        </div>
       </Topic>
 
       <Topic title="How to check Registration Time and Where to Register">
-        <ol id="time">
-          <li>Go to MyPortal.</li>
-          <li>Click on “Student Registration.”</li>
-          <li>Choose “Registration Dashboard.”</li>
-          <li>Check registration time and complete registration.</li>
-        </ol>
+        <div className="registration-bullets">
+          <ol id="time">
+            <li>Go to MyPortal.</li>
+            <li>Click on “Student Registration.”</li>
+            <li>Choose “Registration Dashboard.”</li>
+            <li>Check registration time and complete registration.</li>
+          </ol>
+        </div>
 
         <h3>Go to MyPortal</h3>
         <img className="guide-image guide-banner" src={myPortal} alt="MyPortal registration screen" />
 
         <h3>Go to Student Registration</h3>
-        <img className="guide-image guide-card" src={steps} alt="Student Registration workflow" />
+        <img className="guide-image guide-card" src={student_registration} alt="Student Registration workflow" />
 
         <h3>Registration Dashboard</h3>
         <img className="guide-image guide-card" src={dashboard} alt="Student Registration Dashboard" />
 
-        <h3 id="where">Where to register</h3>
-        <p>Use MyPortal’s Register for Classes page to search, add, drop, and manage classes.</p>
+        <h3>Prepare for Registration</h3>
+        <div className="registration-bullets">
+          Fill out information
+        </div>
+        <img className="guide-image guide-banner" src={preparation} alt = "Student Registration Card"></img>
+
+        <h3>Where to register</h3>
+        <img className="guide-image guide-banner" src={steps} alt="Classes Registration Card"></img>
       </Topic>
 
       <Topic title="General Education (GE) Requirements">
@@ -72,7 +85,17 @@ export default function Registration() {
         </ol>
 
         <h3>Degree Works</h3>
-        <img className="guide-image guide-card" src={degreeWorks} alt="Degree Works What-if guidance" />
+        <img 
+          className="guide-image guide-card" 
+          src={degreeWorks} alt="Degree Works Degree Worksguidance"
+        ></img>
+
+        <h3>Click on What if</h3>
+        <img 
+          className="guide-image guide-banner" 
+          src={whatif} 
+          alt="Degree Works What-if guidance"
+        ></img>
       </Topic>
     </article>
   )

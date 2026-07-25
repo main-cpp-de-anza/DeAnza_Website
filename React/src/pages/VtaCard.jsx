@@ -33,11 +33,19 @@ export default function VtaCard() {
         Google Maps directions to the pickup locations
       </a>
 
-      <section className="vta-documents">
-        <p>Bring a legal document with your face on it.</p>
-        <p>Documents to bring: passport or driver license.</p>
-        <p>We can also make your student ID card.</p>
-      </section>
+      <section className="vta-card-reminder">
+        <p className="vta-card-reminder__documents">
+          Have to bring a legal document with your face on it
+        </p>
+
+        <p className="vta-card-reminder__documents">
+          Documents to bring:
+          <br />
+          passport or driver license
+        </p>
+
+        <p>Also can make Student ID card</p>
+      </section>      
 
       <p className="vta-orientation-reminder">Please bring it with you on Orientation Day!</p>
     </article>
