@@ -18,13 +18,6 @@ function Topic({ title, children }) {
 export default function Registration() {
   return (
     <article className="page-container registration-page">
-      <nav className="registration-contents" aria-label="Registration page contents">
-        <a href="#priority">Priority Registration</a>
-        <a href="#professors">How to Pick a Good Professor</a>
-        <a href="#time">How to Check Registration Time</a>
-        <a href="#where">Where to Register</a>
-        <a href="#ge">General Education (GE) Requirements</a>
-      </nav>
 
       <Topic title="Priority Registration (Steps)">
         <div id="priority" className="registration-bullets">

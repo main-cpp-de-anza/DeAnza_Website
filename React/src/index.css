@@ -224,7 +224,7 @@ h1 {
 }
 .registration-page,
 .transferring-page {
-  --page-width: 790px;
+  --page-width: 1200px;
   padding: 3rem 0 7rem;
   text-align: center;
 }
@@ -262,13 +262,21 @@ h1 {
 .registration-topic p,
 .registration-topic ol,
 .registration-topic ul,
-.transferring-section p,
 .transferring-section ul {
   max-width: 620px;
   margin: 0 auto;
   text-align: left;
-  font-size: .85;
+  font-size: clamp(1rem, 1.4vw, 1.25rem);
   line-height: 1.35;
+}
+
+.transferring-page {
+  --page-width: 1000px;
+}
+.transferring-section p {
+  max-width: 860px;
+  margin: 0 auto; 
+  text-align: center;
 }
 
 .registration-copy p {
@@ -303,6 +311,8 @@ h1 {
   margin-bottom: 1rem !important;
   text-align: center !important;
   font-weight: 600;
+  font-size: clamp(1rem, 1.4vw, 1.25rem);
+  line-height: 1.35;
 }
 
 .assist-guide {

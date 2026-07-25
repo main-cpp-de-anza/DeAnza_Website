@@ -31,12 +31,6 @@ const tagCampuses = [
 export default function Transferring() {
   return (
     <article className="page-container transferring-page">
-      <nav className="transferring-contents" aria-label="Transferring page contents">
-        <a href="#assist">ASSIST</a>
-        <a href="#tag">TAG</a>
-        <a href="#honors">Honors Program</a>
-      </nav>
-
       <section id="assist" className="transferring-section">
         <SectionHeading className="heading-pill">ASSIST</SectionHeading>
         <a
