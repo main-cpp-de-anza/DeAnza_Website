@@ -6,6 +6,10 @@
   --accent: #16543b;
   --footer: #d9d9d9;
   --content: 1120px;
+  --page-gutter: 2rem;
+  --radius-image: 20px;
+  --shadow-card: 0 10px 20px #010d0812;
+  --pill-background: #e7d9ff;
   font-family: 'Mukta Malar', Georgia, serif;
   color: var(--ink);
 }
@@ -14,6 +18,26 @@
 body { margin: 0; min-width: 320px; }
 a { color: inherit; }
 .site-layout { min-height: 100vh; display: flex; flex-direction: column; }
+
+.page-container {
+  width: min(var(--page-width, var(--content)), calc(100% - var(--page-gutter)));
+  margin: 0 auto;
+}
+
+.heading-pill {
+  display: inline-block;
+  padding: .45rem 1rem;
+  border-radius: 999px;
+  background: var(--pill-background);
+  color: var(--ink);
+}
+
+.framed-image {
+  width: 100%;
+  border: 1px solid var(--ink);
+  border-radius: var(--radius-image);
+  object-fit: cover;
+}
 
 .site-nav {
   min-height: 161px;
@@ -38,7 +62,7 @@ a { color: inherit; }
 .desktop-nav a.active { font-weight: 700; text-decoration: underline; text-underline-offset: .3rem; }
 .menu-toggle, .mobile-nav { display: none; }
 
-.page-shell { width: min(var(--content), calc(100% - 2rem)); margin: auto; }
+.page-shell { width: min(var(--content), calc(100% - var(--page-gutter))); margin: auto; }
 .site-footer { height: 85px; margin-top: auto; background: var(--footer); }
 .home { padding: 6rem 0 9rem; }
 .home-hero { max-width: 945px; margin: 0 auto 4rem; text-align: center; }
@@ -46,7 +70,7 @@ a { color: inherit; }
 h1 { margin: .2em 0; font-size: clamp(2.7rem, 6vw, 4.8rem); line-height: 1.05; }
 
 .card-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; }
-.info-card { overflow: hidden; background: #fff; text-decoration: none; box-shadow: 0 10px 20px #010d0812; }
+.info-card { overflow: hidden; background: #fff; text-decoration: none; box-shadow: var(--shadow-card); }
 .card-image { display: block; width: 100%; aspect-ratio: 219 / 189; object-fit: cover; transition: transform .2s; }
 .info-card:hover .card-image { transform: scale(1.025); }
 .card-copy { padding: 1rem 1.4rem 1.4rem; }
@@ -58,8 +82,7 @@ h1 { margin: .2em 0; font-size: clamp(2.7rem, 6vw, 4.8rem); line-height: 1.05; }
 .section-heading { margin-top: 3rem; }
 .article p, .article li { font-size: 1.2rem; line-height: 1.65; }
 .campus-map-page {
-  width: min(1054px, calc(100% - 2rem));
-  margin: 0 auto;
+  --page-width: 1054px;
   padding: 6rem 0 7rem;
 }
 
@@ -71,11 +94,7 @@ h1 { margin: .2em 0; font-size: clamp(2.7rem, 6vw, 4.8rem); line-height: 1.05; }
 }
 
 .campus-map-image {
-  width: 100%;
   aspect-ratio: 621 / 539;
-  border: 1px solid var(--ink);
-  border-radius: 20px;
-  object-fit: cover;
 }
 
 .campus-map-links {
@@ -86,11 +105,9 @@ h1 { margin: .2em 0; font-size: clamp(2.7rem, 6vw, 4.8rem); line-height: 1.05; }
   list-style: none;
   font-size: clamp(1rem, 1.6vw, 1.2rem);
 }
-.guide-image { display: block; width: min(100%, 1144px); height: auto; margin: 2rem auto 3rem; border-radius: .5rem; box-shadow: 0 10px 24px #010d0818; }
 .registration-page,
 .transferring-page {
-  width: min(790px, calc(100% - 2rem));
-  margin: 0 auto;
+  --page-width: 790px;
   padding: 3rem 0 7rem;
   text-align: center;
 }
@@ -147,6 +164,9 @@ h1 { margin: .2em 0; font-size: clamp(2.7rem, 6vw, 4.8rem); line-height: 1.05; }
 }
 
 .guide-image {
+  display: block;
+  width: min(100%, 1144px);
+  height: auto;
   margin: 1rem auto 2rem;
   border-radius: 0;
   box-shadow: none;
@@ -189,8 +209,7 @@ h1 { margin: .2em 0; font-size: clamp(2.7rem, 6vw, 4.8rem); line-height: 1.05; }
 }
 
 .vta-page {
-  width: min(1084px, calc(100% - 2rem));
-  margin: 0 auto;
+  --page-width: 1084px;
   padding: clamp(6rem, 11vw, 10.25rem) 0 7rem;
   text-align: center;
 }
@@ -224,19 +243,14 @@ h1 { margin: .2em 0; font-size: clamp(2.7rem, 6vw, 4.8rem); line-height: 1.05; }
 }
 
 .vta-location-image {
-  width: 100%;
   aspect-ratio: 4 / 3;
-  border: 1px solid var(--ink);
-  border-radius: 20px;
-  object-fit: cover;
 }
 
 .vta-directions {
   display: block;
-  margin: 1rem 0 clamp(6rem, 10vw, 9.5rem);
+  margin: 1rem 0 .2rem;
   text-align: left;
   font-size: clamp(.95rem, 1.7vw, 1.5rem);
-  margin-bottom: 0.2rem;
 }
 
 .vta-documents {
