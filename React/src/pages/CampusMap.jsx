@@ -1,3 +1,6 @@
+import campusMapGuide from '../assets/campus-map-guide.png'
+import BrowserMockup from '../components/BrowserMockup'
+
 const locations = [
   ['De Anza location', 'https://www.google.com/maps/place/De+Anza+College'],
   ['Flint Center Parking Structure', 'https://maps.app.goo.gl/RzvPFVJiEi3btyXdA'],
@@ -14,25 +17,35 @@ const locations = [
 
 export default function CampusMap() {
   return (
-    <article className="page-container campus-map-page">
-      <div className="campus-map-layout">
-        <img
-          className="framed-image campus-map-image"
-          src={campusMapGuide}
-          alt="De Anza College campus map"
-        />
+    <article className="page-container campus-map-page" style={{ paddingTop: '4rem', paddingBottom: '8rem' }}>
+      <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
+        <h1 className="heading-pill">Campus Map</h1>
+        <p style={{ color: 'var(--ink-muted)', fontSize: '1.1rem' }}>Find your way around De Anza College</p>
+      </div>
 
-        <ul className="campus-map-links">
-          {locations.map(([name, url]) => (
-            <li key={name}>
-              <a href={url} target="_blank" rel="noreferrer">
-                {name}
-              </a>
-            </li>
-          ))}
-        </ul>
+      <div className="campus-map-layout">
+        <div>
+          <BrowserMockup>
+            <img
+              src={campusMapGuide}
+              alt="De Anza College campus map"
+            />
+          </BrowserMockup>
+        </div>
+
+        <div>
+          <h3 style={{ fontFamily: 'var(--font-serif)', color: 'var(--accent)', marginTop: 0, marginBottom: '1.5rem', fontSize: '1.5rem' }}>Important Locations</h3>
+          <ul className="campus-map-links">
+            {locations.map(([name, url]) => (
+              <li key={name}>
+                <a href={url} target="_blank" rel="noreferrer">
+                  {name}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     </article>
   )
 }
-import campusMapGuide from '../assets/campus-map-guide.png'

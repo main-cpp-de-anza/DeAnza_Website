@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import logo from '../assets/deanza-logo.png'
+import { Menu, X } from 'lucide-react'
 
 const navigation = [
   ['/registration', 'Student Registration'],
@@ -44,7 +45,7 @@ export default function Navbar() {
         }
         onClick={() => setIsMenuOpen((open) => !open)}
       >
-        ☰
+        {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
       </button>
 
       <nav

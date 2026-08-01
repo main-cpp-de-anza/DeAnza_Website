@@ -14,7 +14,7 @@ const cards = [
   ],
   [
     '/transferring',
-    'Transferring Information',
+    'Transferring',
     'Explore ASSIST, TAG, and transfer resources.',
     transferringCard,
     'Transfer planning guidance',
@@ -40,8 +40,10 @@ export default function Home() {
     <div className="page-shell home">
       <section className="home-hero">
         <p className="eyebrow">De Anza College</p>
-        <h1>Welcome to De Anza College</h1>
-        <p>We are here to help you prepare for your study at De Anza College.</p>
+        <h1 className="serif-title">Welcome to De Anza</h1>
+        <p style={{ color: 'var(--ink-muted)', fontSize: '1.15rem', maxWidth: '600px', margin: '0 auto' }}>
+          We are here to help you prepare for your study at De Anza College with clear, step-by-step guides.
+        </p>
       </section>
 
       <section className="card-grid" aria-label="Student resources">
