@@ -2,7 +2,7 @@ import campusMapGuide from '../assets/campus-map-guide.png'
 import BrowserMockup from '../components/BrowserMockup'
 
 const locations = [
-  ['De Anza location', 'https://www.google.com/maps/place/De+Anza+College'],
+  ['De Anza location', 'https://maps.app.goo.gl/7CAygqfMiLQjEXkP8'],
   ['Flint Center Parking Structure', 'https://maps.app.goo.gl/RzvPFVJiEi3btyXdA'],
   ['Registration & Student Services', 'https://maps.app.goo.gl/ohuxoV8d51iN2Y3z5'],
   ['S Quad Building', 'https://maps.app.goo.gl/PoSAxyVELiUc8mja9'],
