@@ -46,7 +46,7 @@ export default function AboutUs() {
 
         <h2 className="serif-title">Project Contributors</h2>
         <p style={{ fontSize: '1.1rem', color: 'var(--ink-muted)', fontStyle: 'italic' }}>
-          Esther, Chaewon, Phong, Tristan, Nichelle, Caleb, and Angel.
+          Esther, Chaewon, Phong, Jake, Tristan, Nichelle, Caleb, and Angel.
         </p>
       </div>
     </article>

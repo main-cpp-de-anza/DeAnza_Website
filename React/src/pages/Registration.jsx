@@ -5,6 +5,9 @@ import student_registration from '../assets/student-registration.png'
 import preparation from '../assets/registration-preparation.png'
 import degreeWorks from '../assets/registration-degreeworks.png'
 import whatif from '../assets/registration-whatif.png'
+import rateMyProfessor from '../assets/ratemyprofessor.png'
+import daGrades from '../assets/dagrade.png'
+import daReddit from '../assets/reddit.png'
 import BrowserMockup from '../components/BrowserMockup'
 
 function Topic({ title, children }) {
@@ -46,15 +49,24 @@ export default function Registration() {
         <ol className="timeline-list">
           <li className="timeline-item">
             <span className="timeline-badge">1</span>
-            Check <a href="https://www.ratemyprofessors.com/" target="_blank" rel="noreferer">Rate My Professor</a> for student feedback.
+            Check <a href="https://www.ratemyprofessors.com/" target="_blank" rel="noreferrer">Rate My Professor</a> for student feedback.
+            <BrowserMockup>
+              <img src={rateMyProfessor} alt="Rate My Professor search screen" />
+            </BrowserMockup>
           </li>
           <li className="timeline-item">
             <span className="timeline-badge">2</span>
-            Check <a href="https://www.reddit.com/r/DeAnza/" target="_blank" rel="noreferer">Reddit</a> for extra information and course recommendations.
+            Check <a href="https://www.reddit.com/r/DeAnza/" target="_blank" rel="noreferrer">Reddit</a> for extra information and course recommendations.
+            <BrowserMockup>
+              <img src={daReddit} alt="De Anza Reddit Page"/>
+            </BrowserMockup>
           </li>
           <li className="timeline-item">
             <span className="timeline-badge">3</span>
-            Check <a href="https://www.deanzagrades.com/" target="_blank" rel="noreferer">DaGrades</a> to view historic grade distributions.
+            Check <a href="https://www.deanzagrades.com/" target="_blank" rel="noreferrer">DaGrades</a> to view historic grade distributions.
+            <BrowserMockup>
+              <img src={daGrades} alt="DaGrades grade distribution chart" />
+            </BrowserMockup>
           </li>
         </ol>
       </Topic>
