@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react'
-import { MessageCircle, X, Send } from 'lucide-react'
+import { MessageCircle, X, Send, RotateCcw, ExternalLink } from 'lucide-react'
+import ReactMarkdown from 'react-markdown'
 import './Chatbot.css'
 
 export function parseSSEChunk(rawChunk) {
@@ -106,12 +107,49 @@ export default function Chatbot() {
     }
   }
 
+  const handleReset = () => {
+    setMessages([INITIAL_MESSAGE])
+    setInput('')
+    setIsLoading(false)
+  }
+
+  const handleExpand = () => {
+    const realMessages = messages.slice(1).map((m) => ({
+      role: m.role,
+      content: m.content,
+    }))
+    const targetUrl = realMessages.length > 0
+      ? `https://deanza-chatbot.onrender.com/?history=${encodeURIComponent(JSON.stringify(realMessages))}`
+      : 'https://deanza-chatbot.onrender.com/'
+    window.open(targetUrl, '_blank', 'noopener,noreferrer')
+  }
+
   return (
     <div className="chatbot-wrapper">
       {isOpen && (
         <div className={`chatbot-window ${messages.length > 1 ? 'is-expanded' : 'is-compact'}`}>
           <header className="chatbot-header">
             <h3 className="chatbot-title">De Anza Assistant</h3>
+            <div className="chatbot-header-actions">
+              <button
+                type="button"
+                onClick={handleReset}
+                className="chatbot-action-btn"
+                aria-label="Refresh conversation"
+                title="Refresh conversation"
+              >
+                <RotateCcw size={16} />
+              </button>
+              <button
+                type="button"
+                onClick={handleExpand}
+                className="chatbot-action-btn"
+                aria-label="Expand to full website"
+                title="Open in full website"
+              >
+                <ExternalLink size={16} />
+              </button>
+            </div>
           </header>
 
           <div className="chatbot-messages">
@@ -120,7 +158,21 @@ export default function Chatbot() {
                 key={idx}
                 className={`chatbot-msg chatbot-msg-${m.role}`}
               >
-                {m.content || (
+                {m.content ? (
+                  m.role === 'assistant' ? (
+                    <ReactMarkdown
+                      components={{
+                        a: ({ node, ...props }) => (
+                          <a {...props} target="_blank" rel="noreferrer" />
+                        ),
+                      }}
+                    >
+                      {m.content}
+                    </ReactMarkdown>
+                  ) : (
+                    m.content
+                  )
+                ) : (
                   <div className="chatbot-loading-dots">
                     <span></span><span></span><span></span>
                   </div>

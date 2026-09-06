@@ -109,6 +109,30 @@
   font-weight: 600;
 }
 
+.chatbot-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.chatbot-action-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--accent, #0b3c25);
+  padding: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  transition: background 0.2s ease, transform 0.15s ease;
+}
+
+.chatbot-action-btn:hover {
+  background: rgba(11, 60, 37, 0.08);
+  transform: scale(1.08);
+}
+
 .chatbot-close-btn {
   background: transparent;
   border: none;
@@ -156,6 +180,45 @@
   color: var(--ink, #0b1a13);
   border: 1px solid var(--border, rgba(11, 60, 37, 0.08));
   border-radius: 14px 14px 14px 2px;
+}
+
+/* Markdown typography inside assistant messages */
+.chatbot-msg-assistant h1,
+.chatbot-msg-assistant h2,
+.chatbot-msg-assistant h3,
+.chatbot-msg-assistant h4 {
+  font-family: var(--font-serif, 'Lora', Georgia, serif);
+  color: var(--accent, #0b3c25);
+  font-size: 0.96rem;
+  font-weight: 600;
+  margin: 8px 0 4px 0;
+}
+
+.chatbot-msg-assistant a {
+  color: var(--accent, #0b3c25);
+  font-family: var(--font-serif, 'Lora', Georgia, serif);
+  font-weight: 600;
+  text-decoration: none;
+  transition: text-decoration 0.2s ease;
+}
+
+.chatbot-msg-assistant a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.chatbot-msg-assistant p {
+  margin: 0 0 6px 0;
+}
+
+.chatbot-msg-assistant p:last-child {
+  margin-bottom: 0;
+}
+
+.chatbot-msg-assistant ul,
+.chatbot-msg-assistant ol {
+  margin: 4px 0 6px 18px;
+  padding: 0;
 }
 
 /* Typing pulse */
