@@ -31,7 +31,7 @@ const INITIAL_MESSAGE = {
 }
 
 export default function Chatbot() {
-  const [isOpen, setIsOpen] = useState(true)
+  const [isOpen, setIsOpen] = useState(false)
   const [messages, setMessages] = useState([INITIAL_MESSAGE])
   const [input, setInput] = useState('')
   const [isLoading, setIsLoading] = useState(false)
@@ -127,7 +127,9 @@ export default function Chatbot() {
   return (
     <div className="chatbot-wrapper">
       {isOpen && (
-        <div className={`chatbot-window ${messages.length > 1 ? 'is-expanded' : 'is-compact'}`}>
+        <div
+          className={`chatbot-window ${messages.length > 1 ? 'is-expanded' : 'is-compact'}`}
+        >
           <header className="chatbot-header">
             <h3 className="chatbot-title">De Anza Assistant</h3>
             <div className="chatbot-header-actions">

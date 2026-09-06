@@ -86,7 +86,7 @@ a:hover {
   align-items: center;
   width: min(var(--content), calc(100% - var(--page-gutter)));
   margin: 0 auto;
-  gap: clamp(1rem, 4vw, 3.6rem);
+  gap: 2.5rem;
 }
 
 /* SCROLLED STATE */
@@ -106,23 +106,28 @@ a:hover {
 
 .brand {
   flex: none;
-  width: 60px;
-  height: 55px;
+  width: 58px;
+  height: 58px;
   overflow: hidden;
-  border-radius: 8px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .brand img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
 }
 
 .desktop-nav {
   display: flex;
-  justify-content: flex-start;
-  gap: 5rem;
+  flex: 1;
+  justify-content: space-around;
 }
 
 .desktop-nav a {
@@ -229,7 +234,7 @@ a:hover {
 
 /* HOME */
 .home {
-  padding: 6rem 0 9rem;
+  padding: 0.5rem 0 9rem;
 }
 
 .home-hero {
@@ -423,6 +428,14 @@ h1 {
   max-width: 100%;
 }
 
+.registration-page .browser-mockup,
+.transferring-page .browser-mockup,
+.vta-page .framed-image {
+  max-width: 480px;
+  margin: 1.5rem 0;
+  display: block;
+}
+
 .browser-header {
   height: 32px;
   background: #f1f4f2;
@@ -470,28 +483,13 @@ h1 {
   font-weight: 500;
 }
 
-.vta-card-reminder {
-  background: var(--mint);
-  padding: 2.5rem;
-  border-radius: 16px;
-  margin: 4rem 0 2rem;
-  color: var(--ink);
-  text-align: center;
-}
-.vta-card-reminder p {
-  color: var(--ink);
-  font-size: 1.15rem;
-}
-.vta-card-reminder__documents {
-  font-weight: 600;
-  font-size: 1.3rem !important;
-}
 .vta-orientation-reminder {
   text-align: center;
   font-family: var(--font-serif);
   font-style: italic;
   font-size: 1.25rem;
   color: var(--accent);
+  margin-top: 2rem;
 }
 
 /* CAMPUS MAP */

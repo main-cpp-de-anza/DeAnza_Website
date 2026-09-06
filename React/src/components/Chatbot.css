@@ -5,6 +5,7 @@
   right: 24px;
   z-index: 1000;
   font-family: 'Inter', system-ui, sans-serif;
+  transition: right 0.25s ease;
 }
 
 /* Floating circle button */
@@ -42,7 +43,7 @@
 /* Chat window */
 .chatbot-window {
   position: absolute;
-  bottom: 68px;
+  bottom: 76px;
   right: 0;
   width: 360px;
   max-width: calc(100vw - 32px);
