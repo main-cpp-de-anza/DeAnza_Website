@@ -18,6 +18,11 @@ export default function Footer() {
             <li><NavLink to="/transferring">Transferring</NavLink></li>
             <li><NavLink to="/vta-card">VTA Card</NavLink></li>
             <li><NavLink to="/campus-map">Campus Map</NavLink></li>
+            <li>
+              <a href="https://deanza-chatbot.onrender.com/" target="_blank" rel="noreferrer">
+                De Anza Chatbot
+              </a>
+            </li>
             <li><NavLink to="/about">About Us</NavLink></li>
           </ul>
         </div>

@@ -10,7 +10,7 @@ export default function VtaCard() {
           The VTA SmartPass Card allows De Anza students to travel by bus for free throughout the quarter.
         </p>
 
-        <h2 className="heading-pill" style={{ marginTop: '2.5rem' }}>How to apply</h2>
+        <h2 className="heading-pill" style={{ marginTop: '2.5rem' }}>How to Apply (free)</h2>
 
         <ol className="timeline-list">
           <li className="timeline-item">

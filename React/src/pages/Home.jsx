@@ -22,7 +22,7 @@ const cards = [
   [
     '/vta-card',
     'VTA Card',
-    'Learn how to use your student SmartPass.',
+    'Learn how to apply for VTA SmartPass Card.',
     vtaCard,
     'VTA SmartPass guidance',
   ],

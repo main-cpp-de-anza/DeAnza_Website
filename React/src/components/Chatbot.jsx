@@ -30,12 +30,40 @@ const INITIAL_MESSAGE = {
   content: 'Hi! Ask me anything about De Anza courses, schedules, transfer requirements, or registration.',
 }
 
+const STORAGE_KEY = 'deanza_chat_history'
+
 export default function Chatbot() {
   const [isOpen, setIsOpen] = useState(false)
-  const [messages, setMessages] = useState([INITIAL_MESSAGE])
+  const [messages, setMessages] = useState(() => {
+    try {
+      const nav = typeof performance !== 'undefined' ? performance.getEntriesByType?.('navigation')?.[0] : null
+      if (nav?.type === 'reload') {
+        localStorage.removeItem(STORAGE_KEY)
+        return [INITIAL_MESSAGE]
+      }
+      const saved = localStorage.getItem(STORAGE_KEY)
+      if (saved) {
+        const parsed = JSON.parse(saved)
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          return parsed
+        }
+      }
+    } catch {
+      // ignore
+    }
+    return [INITIAL_MESSAGE]
+  })
   const [input, setInput] = useState('')
   const [isLoading, setIsLoading] = useState(false)
   const messagesEndRef = useRef(null)
+
+  useEffect(() => {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(messages))
+    } catch {
+      // ignore
+    }
+  }, [messages])
 
   useEffect(() => {
     if (isOpen) {
@@ -108,6 +136,11 @@ export default function Chatbot() {
   }
 
   const handleReset = () => {
+    try {
+      localStorage.removeItem(STORAGE_KEY)
+    } catch {
+      // ignore
+    }
     setMessages([INITIAL_MESSAGE])
     setInput('')
     setIsLoading(false)
