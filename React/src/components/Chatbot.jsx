@@ -31,9 +31,20 @@ const INITIAL_MESSAGE = {
 }
 
 const STORAGE_KEY = 'deanza_chat_history'
+const OPEN_STORAGE_KEY = 'deanza_chatbot_is_open'
 
 export default function Chatbot() {
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(() => {
+    try {
+      const saved = localStorage.getItem(OPEN_STORAGE_KEY)
+      if (saved !== null) {
+        return JSON.parse(saved)
+      }
+    } catch {
+      // ignore
+    }
+    return true
+  })
   const [messages, setMessages] = useState(() => {
     try {
       const nav = typeof performance !== 'undefined' ? performance.getEntriesByType?.('navigation')?.[0] : null
@@ -56,6 +67,14 @@ export default function Chatbot() {
   const [input, setInput] = useState('')
   const [isLoading, setIsLoading] = useState(false)
   const messagesEndRef = useRef(null)
+
+  useEffect(() => {
+    try {
+      localStorage.setItem(OPEN_STORAGE_KEY, JSON.stringify(isOpen))
+    } catch {
+      // ignore
+    }
+  }, [isOpen])
 
   useEffect(() => {
     try {
@@ -85,7 +104,7 @@ export default function Chatbot() {
     setMessages((prev) => [...prev, { role: 'assistant', content: '' }])
 
     try {
-      const response = await fetch('https://deanza-chatbot.onrender.com/api/chat', {
+      const response = await fetch('https://dachatbot.com/api/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -151,10 +170,10 @@ export default function Chatbot() {
       role: m.role,
       content: m.content,
     }))
-    const targetUrl = realMessages.length > 0
-      ? `https://deanza-chatbot.onrender.com/?history=${encodeURIComponent(JSON.stringify(realMessages))}`
-      : 'https://deanza-chatbot.onrender.com/'
-    window.open(targetUrl, '_blank', 'noopener,noreferrer')
+    const fullWindowUrl = realMessages.length > 0
+      ? `https://dachatbot.com/?history=${encodeURIComponent(JSON.stringify(realMessages))}`
+      : 'https://dachatbot.com/'
+    window.open(fullWindowUrl, '_blank', 'noopener,noreferrer')
   }
 
   return (
