@@ -23,11 +23,6 @@ export default function Footer() {
                 De Anza Chatbot
               </a>
             </li>
-            <li>
-              <a href="https://whogotin.com/" target="_blank" rel="noreferrer">
-                WhoGotIn
-              </a>
-            </li>
             <li><NavLink to="/about">About Us</NavLink></li>
           </ul>
         </div>

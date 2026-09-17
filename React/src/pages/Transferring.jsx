@@ -1,5 +1,4 @@
 import assistGuide from '../assets/transferring-assist.png'
-import whogotinImg from '../assets/whogotin.png'
 import BrowserMockup from '../components/BrowserMockup'
 
 const tagCampuses = [
@@ -64,23 +63,6 @@ export default function Transferring() {
           ))}
         </ul>
         <p style={{ fontStyle: 'italic' }}>Note: UC Berkeley, UCLA, and UC San Diego do not offer TAG.</p>
-      </section>
-
-      <section id="transfer-stats" className="transferring-section">
-        <h2 className="heading-pill">Transfer Stats & Profiles</h2>
-        <h3>Explore Past Transfer Results</h3>
-        <p>
-          Check real student GPAs, majors, and admission results from California community colleges on{' '}
-          <a href="https://whogotin.com/" target="_blank" rel="noreferrer">
-            WhoGotIn
-          </a>.
-        </p>
-        <BrowserMockup>
-          <img
-            src={whogotinImg}
-            alt="WhoGotIn student transfer profiles and admission stats"
-          />
-        </BrowserMockup>
       </section>
 
       <section id="honors" className="transferring-section">
