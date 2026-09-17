@@ -9,12 +9,12 @@ export default function AboutUs() {
       </div>
 
       <div style={{ maxWidth: '640px', margin: '0 auto' }}>
-        <h2 className="serif-title">Our Goal</h2>
+        <h2 id="our-goal" className="serif-title">Our Goal</h2>
         <p style={{ fontSize: '1.1rem', lineHeight: '1.7', color: 'var(--ink-muted)' }}>
           Helping people through our ideas and projects, while students can experience practical coding and build a portfolio.
         </p>
 
-        <h2 className="serif-title">Activities</h2>
+        <h2 id="activities" className="serif-title">Activities</h2>
         <p style={{ fontSize: '1.1rem', lineHeight: '1.7', color: 'var(--ink-muted)' }}>
           Our club provides opportunities to work on long-term programming projects and participate in short activities such as competitions.
         </p>
@@ -22,7 +22,7 @@ export default function AboutUs() {
           We are looking for passionate students who love coding or helping other people and are excited to work with us. Do not hesitate to join!
         </p>
 
-        <h2 className="serif-title">Contact Information</h2>
+        <h2 id="contact-info" className="serif-title">Contact Information</h2>
         <ul className="timeline-list" style={{ marginTop: '1.5rem' }}>
           <li className="timeline-item" style={{ marginBottom: '1.5rem' }}>
              <span className="timeline-badge" style={{ width: '1rem', height: '1rem', left: '-2.25rem', backgroundColor: 'var(--accent)' }}></span>
@@ -44,7 +44,7 @@ export default function AboutUs() {
           </li>
         </ul>
 
-        <h2 className="serif-title">Project Contributors</h2>
+        <h2 id="contributors" className="serif-title">Project Contributors</h2>
         <p style={{ fontSize: '1.1rem', color: 'var(--ink-muted)', fontStyle: 'italic' }}>
           Esther, Chaewon, Phong, Jake, Tristan, Nichelle, Caleb, and Angel.
         </p>

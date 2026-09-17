@@ -26,6 +26,10 @@
   background-color: var(--bg-page);
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -34,6 +38,13 @@ body {
   min-width: 320px;
   margin: 0;
   -webkit-font-smoothing: antialiased;
+}
+
+section[id],
+h2[id],
+h3[id],
+article[id] {
+  scroll-margin-top: 90px;
 }
 
 h1, h2, h3, h4, h5, h6, .serif-title {
@@ -135,6 +146,19 @@ a:hover {
   display: flex;
   flex: 1;
   justify-content: space-around;
+  align-items: center;
+}
+
+.nav-item-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.nav-item-header {
+  display: flex;
+  align-items: center;
+  gap: 0.15rem;
 }
 
 .desktop-nav a {
@@ -167,6 +191,77 @@ a:hover {
 .desktop-nav a:hover,
 .desktop-nav a.active {
   color: var(--accent);
+}
+
+.nav-chevron-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0.35rem;
+  color: var(--ink-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition: transform 0.2s ease, color 0.2s ease, background-color 0.2s ease;
+}
+
+.nav-chevron-btn:hover {
+  color: var(--accent);
+  background-color: rgba(11, 60, 37, 0.06);
+}
+
+.nav-chevron-btn.is-open {
+  transform: rotate(180deg);
+  color: var(--accent);
+}
+
+/* DESKTOP DROPDOWN (Outlook-style) */
+.nav-dropdown-menu {
+  position: absolute;
+  top: calc(100% + 0.75rem);
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  padding: 0.5rem 0;
+  min-width: 220px;
+  z-index: 1000;
+  animation: dropdown-fade 0.15s ease-out;
+}
+
+@keyframes dropdown-fade {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -6px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+.nav-dropdown-item {
+  display: block;
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  padding: 0.65rem 1.25rem;
+  font-family: inherit;
+  font-size: 0.95rem;
+  color: var(--ink);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.nav-dropdown-item:hover {
+  background-color: #f0f4f2;
+  color: var(--accent);
+  text-decoration: underline;
 }
 
 .menu-toggle,
@@ -593,16 +688,72 @@ h1 {
   }
   
   .mobile-nav.is-open {
-    display: grid;
-    gap: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    max-height: 80vh;
+    overflow-y: auto;
   }
   
+  .mobile-nav-item {
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+    padding-bottom: 0.25rem;
+  }
+
+  .mobile-nav-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
   .mobile-nav a {
     font-size: 1.1rem;
     color: var(--ink);
     text-decoration: none;
     padding: 0.5rem 0;
-    border-bottom: 1px solid rgba(0,0,0,0.05);
+    flex: 1;
+  }
+
+  .mobile-chevron-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    color: var(--ink-muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease, color 0.2s ease;
+  }
+
+  .mobile-chevron-btn.is-open {
+    transform: rotate(180deg);
+    color: var(--accent);
+  }
+
+  .mobile-subsections {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    padding: 0.25rem 0 0.75rem 1rem;
+  }
+
+  .mobile-subsection-item {
+    background: none;
+    border: none;
+    text-align: left;
+    font-family: inherit;
+    font-size: 0.95rem;
+    color: var(--ink-muted);
+    padding: 0.4rem 0.5rem;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: color 0.15s ease, background-color 0.15s ease;
+  }
+
+  .mobile-subsection-item:hover {
+    color: var(--accent);
+    background-color: rgba(11, 60, 37, 0.05);
   }
   
   .campus-map-layout {

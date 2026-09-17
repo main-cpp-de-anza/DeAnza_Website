@@ -10,9 +10,9 @@ import daGrades from '../assets/dagrade.png'
 import daReddit from '../assets/reddit.png'
 import BrowserMockup from '../components/BrowserMockup'
 
-function Topic({ title, children }) {
+function Topic({ id, title, children }) {
   return (
-    <section className="registration-topic">
+    <section id={id} className="registration-topic">
       <h2 className="heading-pill">{title}</h2>
       {children}
     </section>
@@ -23,7 +23,7 @@ export default function Registration() {
   return (
     <article className="page-container registration-page">
 
-      <Topic title="Priority Registration">
+      <Topic id="priority-registration" title="Priority Registration">
         <p>When you <a href="https://www.deanza.edu/apply-and-register/" target="_blank" rel="noreferer">apply to De Anza</a>, be sure to complete these important steps:</p>
         <ol className="timeline-list">
           <li className="timeline-item">
@@ -45,7 +45,7 @@ export default function Registration() {
         </ol>
       </Topic>
 
-      <Topic title="Picking a Good Professor">
+      <Topic id="picking-a-professor" title="Picking a Good Professor">
         <ol className="timeline-list">
           <li className="timeline-item">
             <span className="timeline-badge">1</span>
@@ -71,7 +71,7 @@ export default function Registration() {
         </ol>
       </Topic>
 
-      <Topic title="Registration Steps">
+      <Topic id="registration-steps" title="Registration Steps">
         <ol className="timeline-list">
           <li className="timeline-item">
             <span className="timeline-badge">1</span>
@@ -118,7 +118,7 @@ export default function Registration() {
         </ol>
       </Topic>
 
-      <Topic title="General Education (GE) Requirements">
+      <Topic id="ge-requirements" title="General Education (GE) Requirements">
         <ol className="timeline-list">
           <li className="timeline-item">
             <span className="timeline-badge">1</span>
