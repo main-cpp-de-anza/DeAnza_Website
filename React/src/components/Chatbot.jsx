@@ -1,11 +1,12 @@
 import { useState, useRef, useEffect } from 'react'
-import { MessageCircle, X, Send, RotateCcw, ExternalLink } from 'lucide-react'
+import { MessageCircle, X, Send, RotateCcw, ExternalLink, Square } from 'lucide-react'
 import ReactMarkdown from 'react-markdown'
 import './Chatbot.css'
 
 export function parseSSEChunk(rawChunk) {
   const lines = rawChunk.split('\n')
   const tokens = []
+  const statuses = []
   let isDone = false
 
   for (const line of lines) {
@@ -16,13 +17,14 @@ export function parseSSEChunk(rawChunk) {
     try {
       const data = JSON.parse(payload)
       if (data.done) isDone = true
+      if (data.status) statuses.push(data.status)
       if (data.text) tokens.push(data.text)
     } catch {
       // ignore non-json keep-alive
     }
   }
 
-  return { tokens, isDone }
+  return { tokens, statuses, isDone }
 }
 
 const INITIAL_MESSAGE = {
@@ -66,7 +68,9 @@ export default function Chatbot() {
   })
   const [input, setInput] = useState('')
   const [isLoading, setIsLoading] = useState(false)
+  const [statusMessage, setStatusMessage] = useState('')
   const messagesEndRef = useRef(null)
+  const abortControllerRef = useRef(null)
 
   useEffect(() => {
     try {
@@ -88,20 +92,49 @@ export default function Chatbot() {
     if (isOpen) {
       messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
     }
-  }, [messages, isOpen])
+  }, [messages, isOpen, statusMessage])
+
+  const handleStop = () => {
+    if (abortControllerRef.current) {
+      abortControllerRef.current.abort()
+      abortControllerRef.current = null
+    }
+    setIsLoading(false)
+    setStatusMessage('')
+    setMessages((prev) => {
+      const copy = [...prev]
+      const last = copy[copy.length - 1]
+      if (last && last.role === 'assistant' && !last.content) {
+        copy[copy.length - 1] = {
+          role: 'assistant',
+          content: 'Stopped.',
+        }
+      }
+      return copy
+    })
+  }
 
   const handleSend = async (e) => {
     e?.preventDefault()
+    if (isLoading) {
+      handleStop()
+      return
+    }
+
     const userText = input.trim()
-    if (!userText || isLoading) return
+    if (!userText) return
 
     const newHistory = [...messages, { role: 'user', content: userText }]
     setMessages(newHistory)
     setInput('')
     setIsLoading(true)
+    setStatusMessage('Searching database...')
 
     // Append placeholder for assistant response
     setMessages((prev) => [...prev, { role: 'assistant', content: '' }])
+
+    const controller = new AbortController()
+    abortControllerRef.current = controller
 
     try {
       const response = await fetch('https://dachatbot.com/api/chat', {
@@ -111,6 +144,7 @@ export default function Chatbot() {
           message: userText,
           history: messages.slice(1).map((m) => ({ role: m.role, content: m.content })),
         }),
+        signal: controller.signal,
       })
 
       if (!response.ok || !response.body) {
@@ -126,9 +160,18 @@ export default function Chatbot() {
         if (done) break
 
         const chunk = decoder.decode(value, { stream: true })
-        const { tokens } = parseSSEChunk(chunk)
+        const { tokens, statuses } = parseSSEChunk(chunk)
+
+        for (const st of statuses) {
+          if (st === 'searching') {
+            setStatusMessage('Searching database...')
+          } else if (st === 'preparing') {
+            setStatusMessage('Preparing answer...')
+          }
+        }
 
         if (tokens.length > 0) {
+          setStatusMessage('')
           accumulated += tokens.join('')
           setMessages((prev) => {
             const copy = [...prev]
@@ -140,7 +183,10 @@ export default function Chatbot() {
           })
         }
       }
-    } catch {
+    } catch (err) {
+      if (err?.name === 'AbortError') {
+        return
+      }
       setMessages((prev) => {
         const copy = [...prev]
         copy[copy.length - 1] = {
@@ -151,10 +197,16 @@ export default function Chatbot() {
       })
     } finally {
       setIsLoading(false)
+      setStatusMessage('')
+      abortControllerRef.current = null
     }
   }
 
   const handleReset = () => {
+    if (abortControllerRef.current) {
+      abortControllerRef.current.abort()
+      abortControllerRef.current = null
+    }
     try {
       localStorage.removeItem(STORAGE_KEY)
     } catch {
@@ -163,6 +215,7 @@ export default function Chatbot() {
     setMessages([INITIAL_MESSAGE])
     setInput('')
     setIsLoading(false)
+    setStatusMessage('')
   }
 
   const handleExpand = () => {
@@ -183,14 +236,14 @@ export default function Chatbot() {
           className={`chatbot-window ${messages.length > 1 ? 'is-expanded' : 'is-compact'}`}
         >
           <header className="chatbot-header">
-            <h3 className="chatbot-title">De Anza Assistant</h3>
+            <span className="chatbot-title">De Anza Guide AI</span>
             <div className="chatbot-header-actions">
               <button
                 type="button"
                 onClick={handleReset}
                 className="chatbot-action-btn"
-                aria-label="Refresh conversation"
-                title="Refresh conversation"
+                aria-label="Clear chat history"
+                title="Clear chat"
               >
                 <RotateCcw size={16} />
               </button>
@@ -227,8 +280,13 @@ export default function Chatbot() {
                     m.content
                   )
                 ) : (
-                  <div className="chatbot-loading-dots">
-                    <span></span><span></span><span></span>
+                  <div className="chatbot-loading-status">
+                    <div className="chatbot-loading-dots">
+                      <span></span><span></span><span></span>
+                    </div>
+                    <span className="chatbot-status-text">
+                      {statusMessage || 'Preparing answer...'}
+                    </span>
                   </div>
                 )}
               </div>
@@ -244,14 +302,26 @@ export default function Chatbot() {
               onChange={(e) => setInput(e.target.value)}
               disabled={isLoading}
             />
-            <button
-              type="submit"
-              className="chatbot-send-btn"
-              disabled={isLoading || !input.trim()}
-              aria-label="Send message"
-            >
-              <Send size={16} />
-            </button>
+            {isLoading ? (
+              <button
+                type="button"
+                className="chatbot-send-btn is-stopping"
+                onClick={handleStop}
+                aria-label="Pause response"
+                title="Pause response"
+              >
+                <Square size={14} fill="currentColor" />
+              </button>
+            ) : (
+              <button
+                type="submit"
+                className="chatbot-send-btn"
+                disabled={!input.trim()}
+                aria-label="Send message"
+              >
+                <Send size={16} />
+              </button>
+            )}
           </form>
         </div>
       )}
