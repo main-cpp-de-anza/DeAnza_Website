@@ -128,7 +128,7 @@ export default function Chatbot() {
     setMessages(newHistory)
     setInput('')
     setIsLoading(true)
-    setStatusMessage('Searching database...')
+    setStatusMessage('Connecting to server...')
 
     // Append placeholder for assistant response
     setMessages((prev) => [...prev, { role: 'assistant', content: '' }])
@@ -285,7 +285,7 @@ export default function Chatbot() {
                       <span></span><span></span><span></span>
                     </div>
                     <span className="chatbot-status-text">
-                      {statusMessage || 'Preparing answer...'}
+                      {statusMessage || 'Connecting to server...'}
                     </span>
                   </div>
                 )}
